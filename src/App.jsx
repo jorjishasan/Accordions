@@ -9,7 +9,6 @@ const Accordion = () => {
   const handleClick = () => setIsOpen(!isOpen);
 
   const [activeIndex, setActiveIndex] = useState(null);
-  const [currOpen, setCurrOpen] = useState(-1); //used negative unreal index
 
   return (
     <div className="border-rounded font-mono shadow-custom-blue rounded-2xl flex items-center flex-col">
@@ -30,13 +29,7 @@ const Accordion = () => {
               item={item}
               showItem={index === activeIndex ? true : false}
               setActiveIndex={() => {
-                if (currOpen === activeIndex && activeIndex === index) {
-                  setActiveIndex(null);
-                  setCurrOpen(-1);
-                } else {
-                  setActiveIndex(index);
-                  setCurrOpen(index);
-                }
+                setActiveIndex(activeIndex === index ? null : index);
               }}
             />
           ))}
