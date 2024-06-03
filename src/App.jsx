@@ -8,7 +8,8 @@ const Accordion = () => {
   const [isOpen, setIsOpen] = useState(false);
   const handleClick = () => setIsOpen(!isOpen);
 
-  // const [activeIndex, setActiveIndex] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(null);
+  const [currOpen, setCurrOpen] = useState(-1); //used negative unreal index
 
   return (
     <div className="border-rounded font-mono shadow-custom-blue rounded-2xl flex items-center flex-col">
@@ -19,12 +20,25 @@ const Accordion = () => {
         }`}
       >
         <h1 className="text-[32px]">Container</h1>
-        <img className={isOpen && "rotate-180"} src={caret} />
+        <img className={`${isOpen && "rotate-180"}`} src={caret} />
       </div>
       {isOpen && (
         <div className="flex flex-col gap-3 w-[500px] mb-24 mt-[48px] ">
           {accordionData.map((item, index) => (
-            <AccordionFrame key={index} item={item} />
+            <AccordionFrame
+              key={index}
+              item={item}
+              showItem={index === activeIndex ? true : false}
+              setActiveIndex={() => {
+                if (currOpen === activeIndex && activeIndex === index) {
+                  setActiveIndex(null);
+                  setCurrOpen(-1);
+                } else {
+                  setActiveIndex(index);
+                  setCurrOpen(index);
+                }
+              }}
+            />
           ))}
         </div>
       )}
