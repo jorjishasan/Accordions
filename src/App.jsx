@@ -5,7 +5,7 @@ import caret from "./assets/caret-down.svg";
 import { useState } from "react";
 
 const Accordion = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const handleClick = () => setIsOpen(!isOpen);
 
   const [activeIndex, setActiveIndex] = useState(null);
