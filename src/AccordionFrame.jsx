@@ -8,9 +8,9 @@ const AccordionFrame = ({
 }) => {
   console.log("Micro header rendered !");
   return (
-    <div className="border-[1px] rounded-md border-blue-600/[.44] ">
+    <div className="rounded-md border-[1px] border-blue-600/[.44]">
       <div
-        className={`flex px-[36px] py-4 gap-[48px] items-center text-xl select-none cursor-pointer ${
+        className={`flex cursor-pointer select-none items-center gap-[48px] px-[36px] py-4 text-xl ${
           showItem && "border-b border-inherit"
         }`}
         onClick={setActiveIndex}
